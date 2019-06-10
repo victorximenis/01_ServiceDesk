@@ -1,5 +1,7 @@
 package com.victor.servicedesk.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity(name = "tecnicos")
@@ -7,6 +9,7 @@ public class Tecnico extends Model {
 
     @OneToOne
     @JoinColumn(name = "id_pessoa")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Pessoa pessoa;
 
     @Column(name = "setor")

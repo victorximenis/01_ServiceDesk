@@ -16,7 +16,7 @@ public class HistoricoInteracao extends Model {
     @JoinColumn(name = "id_equipamento")
     private Equipamento equipamento;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_ocorrencia")
     private Ocorrencia ocorrencia;
 

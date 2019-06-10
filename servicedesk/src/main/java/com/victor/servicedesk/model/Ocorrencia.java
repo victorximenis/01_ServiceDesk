@@ -2,6 +2,7 @@ package com.victor.servicedesk.model;
 
 import com.victor.servicedesk.enums.OcorrenciaUrgenciaEnum;
 import com.victor.servicedesk.enums.StatusOcorrenciaEnum;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -45,6 +46,11 @@ public class Ocorrencia extends Model {
 
     @OneToMany(mappedBy = "ocorrencia")
     private List<HistoricoAtendimento> historicoAtendimento;
+
+    @OneToOne
+    @JoinColumn(name = "id_solucao_ocorrencia")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private SolucaoOcorrencia solucaoOcorrencia;
 
     public Date getDataHora() {
         return dataHora;
@@ -124,5 +130,13 @@ public class Ocorrencia extends Model {
 
     public void setHistoricoAtendimento(List<HistoricoAtendimento> historicoAtendimento) {
         this.historicoAtendimento = historicoAtendimento;
+    }
+
+    public SolucaoOcorrencia getSolucaoOcorrencia() {
+        return solucaoOcorrencia;
+    }
+
+    public void setSolucaoOcorrencia(SolucaoOcorrencia solucaoOcorrencia) {
+        this.solucaoOcorrencia = solucaoOcorrencia;
     }
 }
